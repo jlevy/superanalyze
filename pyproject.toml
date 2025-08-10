@@ -12,7 +12,7 @@ authors = [
     { name="Joshua Levy", email="joshua@cal.berkeley.edu" },
 ]
 readme = "README.md"
-license = "MIT"
+license = "AGPL-3.0-or-later"
 requires-python = ">=3.11,<4.0"
 dynamic = ["version"]
 
@@ -38,6 +38,11 @@ classifiers = [
 # ---- Main dependencies ----
 
 dependencies = [
+    "kash-docs>=0.1.15",
+    "flowmark>=0.5.2",
+    "prettyfmt>=0.2.1",
+    "rich>=14.0.0",
+    "rich-argparse>=1.7.0",
 ]
 
 
@@ -50,13 +55,21 @@ dev = [
     "ruff>=0.11.9",
     "codespell>=2.4.1",
     "rich>=14.0.0",
-    "basedpyright>=1.29.1",
+    "basedpyright==1.29.5",  # TODO: Upgrade when Cursor supports it.
     "funlog>=0.2.1",
 ]
 
+[tool.uv.sources]
+# For bleeding edge:
+# kash-media = { git = "https://github.com/jlevy/kash-media.git" }
+kash-docs = { git = "https://github.com/jlevy/kash-docs.git" }
+kash-shell = { git = "https://github.com/jlevy/kash-shell.git" }
+# For local development:
+# kash-media = { path = "../kash-media", editable = true }
+
 [project.scripts]
-# Add script entry points here:
-superanalyze = "superanalyze:main"
+# Add script entry points here.
+superanalyze = "superanalyze.cli_main:main"
 
 
 # ---- Build system ----
@@ -148,12 +161,13 @@ reportAny = false
 reportExplicitAny = false
 reportImplicitStringConcatenation = false
 reportUnreachable = false
-# reportPrivateImportUsage = false
+reportPrivateImportUsage = false
 # reportPrivateLocalImportUsage = false
 # reportMissingImports = false
 # reportUnnecessaryIsInstance = false
-# reportUnknownVariableType = false
-# reportUnknownArgumentType = false
+reportUnknownVariableType = false
+reportUnknownArgumentType = false
+reportUnknownMemberType = false
 
 [tool.codespell]
 # Add here as needed:
