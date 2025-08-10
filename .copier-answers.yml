@@ -1,0 +1,9 @@
+# Changes here will be overwritten by Copier. Do not edit manually.
+_commit: v0.2.16
+_src_path: gh:jlevy/simple-modern-uv
+package_author_email: joshua@cal.berkeley.edu
+package_author_name: Joshua Levy
+package_description: Analyze claims, rigor, and evidence in a doc
+package_github_org: jlevy
+package_module: superanalyze
+package_name: superanalyze
