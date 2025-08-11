@@ -1258,8 +1258,8 @@ wheels = [
 
 [[package]]
 name = "kash-docs"
-version = "0.1.16.dev19+2199aa9"
-source = { git = "https://github.com/jlevy/kash-docs.git#2199aa96a44c65bae7772a18f9c72330bf5bf725" }
+version = "0.1.16.dev20+4802280"
+source = { git = "https://github.com/jlevy/kash-docs.git#4802280d642aadc64ecfbed8a65f9b82f78bdc7a" }
 dependencies = [
     { name = "beautifulsoup4" },
     { name = "boto3" },

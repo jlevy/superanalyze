@@ -47,6 +47,11 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Skip HTML minification step",
     )
+    parser.add_argument(
+        "--show",
+        action="store_true",
+        help="Automatically open the results in a browser after analysis",
+    )
 
     # Common arguments
     parser.add_argument(
@@ -79,8 +84,11 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def display_results(base_dir: Path, md_path: Path, html_path: Path) -> None:
+def display_results(base_dir: Path, md_path: Path, html_path: Path, show: bool = False) -> None:
     """Display the results of analysis to the user."""
+
+    from kash.commands.base.show_command import show as show_command
+
     rprint(
         dedent(f"""
             [green]All done![/green]
@@ -100,6 +108,9 @@ def display_results(base_dir: Path, md_path: Path, html_path: Path) -> None:
             You can explore the workspace further using the kash shell if needed.
             """)
     )
+
+    if show:
+        show_command(html_path)
 
 
 def main() -> None:
@@ -141,7 +152,7 @@ def main() -> None:
             args.input,
             args.no_minify,
         )
-        display_results(Path(args.workspace), md_path, html_path)
+        display_results(Path(args.workspace), md_path, html_path, show=args.show)
     except Exception as e:
         log.error("Error running analysis", exc_info=e)
         rprint(f"[red]Error: {e}[/red]")
