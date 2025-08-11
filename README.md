@@ -12,9 +12,14 @@ It might be a deep research report.
 Or it might be a transcript of a talk, or anything else where someone makes claims or
 takes a stance on a topic.
 
+Superanalyze provides deep analysis of long documents, making it possible to break down
+AI or human-written reports or transcripts systematically, to evaluate claims, rigor,
+and evidence.
+
 ## Approach
 
-This tool is an experiment in using more structured analysis of a document:
+Superanalyze is an experiment at building a this kind of tool.
+It uses a sequence of LLM prompts (and some embeddings) to analyze:
 
 - What are the key claims
 
@@ -25,9 +30,10 @@ This tool is an experiment in using more structured analysis of a document:
 
 - Evaluating the rigor of the claims and if the evidence supports it
 
-- Visualizing these in some way.
+- Visualizing these in the document in a way that lets you drill down and see the
+  assessments and whether you believe them
 
-Our belief is that
+The design is based on three key beliefs:
 
 1. **Automatic, easier deep analysis:** While establishing absolute truth of statements
    is very hard, there *are *many statements are arguments that are easy to evaluate for
@@ -53,6 +59,19 @@ This is built on [kash](https://www.github.com/jlevy/kash) and its
 It’s a good use case for this framework as it has lots of actions that do individual
 portions like summarizing, chunking, handling footnotes, etc, but none had been stitched
 together properly for a deeper analysis of document claims.
+
+This has let us convert PDFs and transcribe YouTube videos and then analyze them as
+clean Markdown with annotations.
+
+## Status
+
+New!
+
+We’re still experimenting with UI on visualizing them, but it seems promising.
+
+Factuality is a tough thing to measure, but we now have partial support for crawling all
+linked resources and analyzing strength of evidence.
+This part isn’t fully done yet but will be soon.
 
 ## Usage
 
