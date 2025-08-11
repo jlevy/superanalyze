@@ -16,12 +16,13 @@ See the `env.template` to set up keys (default model is OpenAI).
 It should work on most file types, including text, HTML, and PDF.
 
 ```bash
-superanalyze somefile.pdf
+uv run superanalyze somefile.pdf
 ```
 
 ## MCP Server
 
 Run as an MCP server for integration with other tools.
+Once it is in your path:
 
 ```bash
 # Run as stdio MCP server

@@ -182,9 +182,6 @@ class ClaimAnalysis(BaseModel):
         """
         parts = []
 
-        # Claim text and related chunks
-        parts.append(f"**Text:** {self.claim}")
-
         # Format related chunks with scores if available
         if self.chunk_scores and len(self.chunk_scores) == len(self.chunk_ids):
             chunk_links = []

@@ -11,7 +11,9 @@ from superanalyze.actions.analyze_document_claims import analyze_document_claims
 log = logging.getLogger(__name__)
 
 
-def run_analysis(ws_root: Path, url: str, no_minify: bool = False) -> tuple[Path, Path]:
+def run_analysis(
+    ws_root: Path, url: str, no_minify: bool = False, include_debug: bool = True
+) -> tuple[Path, Path]:
     # Import dynamically for faster startup.
     from kash.config.setup import kash_setup
     from kash.config.unified_live import get_unified_live
@@ -29,7 +31,7 @@ def run_analysis(ws_root: Path, url: str, no_minify: bool = False) -> tuple[Path
         with get_unified_live().status("Processing…"):
             # Prepare the input and run analysis.
             input = prepare_action_input(url)
-            result_item = analyze_document_claims(input.items[0])
+            result_item = analyze_document_claims(input.items[0], include_debug=include_debug)
 
             return format_results(result_item, runtime.workspace.base_dir, no_minify=no_minify)
 
@@ -54,7 +56,7 @@ def format_results(result_item: Item, base_dir: Path, no_minify: bool = False) -
 
     # Generate HTML using simple webpage template
     html_content = render_web_template(
-        "simple_webpage.html.jinja",
+        "youtube_webpage.html.jinja",
         data={
             "title": result_item.title,
             "add_title_h1": True,
